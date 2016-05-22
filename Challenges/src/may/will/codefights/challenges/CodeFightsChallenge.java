@@ -62,7 +62,7 @@ public class CodeFightsChallenge {
 				expectedOutput));
 	}
 
-	protected static String printStringArray(String[] input) {
+	private static String printStringArray(String[] input) {
 		String output = "";
 		for (int i = 0; i < input.length; i++) {
 			if (i == 0) {
