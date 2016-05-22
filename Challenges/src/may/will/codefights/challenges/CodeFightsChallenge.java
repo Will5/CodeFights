@@ -10,6 +10,10 @@ public class CodeFightsChallenge {
 		printChallengeCase(String.format("Example %d", count), input, output, expectedOutput);
 	}
 
+	protected static void printExampleCase(String classSimpleName, int count, String input, int[] output, int[] expectedOutput) {
+		printExampleCase(classSimpleName, count, input, printIntArray(output), printIntArray(expectedOutput));
+	}
+
 	protected static void printExampleCase(String classSimpleName, int count, String input, String[] output, String[] expectedOutput) {
 		printExampleCase(classSimpleName, count, input, printStringArray(output), printStringArray(expectedOutput));
 	}
@@ -22,6 +26,10 @@ public class CodeFightsChallenge {
 		printChallengeCase(String.format("Test %d", count), input, output, expectedOutput);
 	}
 
+	protected static void printTestCase(String classSimpleName, int count, String input, int[] output, int[] expectedOutput) {
+		printTestCase(classSimpleName, count, input, printIntArray(output), printIntArray(expectedOutput));
+	}
+
 	protected static void printTestCase(String classSimpleName, int count, String input, String[] output, String[] expectedOutput) {
 		printTestCase(classSimpleName, count, input, printStringArray(output), printStringArray(expectedOutput));
 	}
@@ -32,6 +40,10 @@ public class CodeFightsChallenge {
 
 		// Print Custom Test Case
 		printChallengeCase(String.format("Custom test %d", count), input, output, expectedOutput);
+	}
+
+	protected static void printCustomTestCase(String classSimpleName, int count, String input, int[] output, int[] expectedOutput) {
+		printCustomTestCase(classSimpleName, count, input, printIntArray(output), printIntArray(expectedOutput));
 	}
 
 	protected static void printCustomTestCase(String classSimpleName, int count, String input, String[] output, String[] expectedOutput) {
@@ -60,6 +72,18 @@ public class CodeFightsChallenge {
 				input,
 				String.valueOf(output),
 				expectedOutput));
+	}
+
+	private static String printIntArray(int[] input) {
+		String output = "[";
+		for (int i = 0; i < input.length; i++) {
+			if (i == input.length - 1) {
+				output += input[i];
+			} else {
+				output += input[i] + ", ";
+			}
+		}
+		return output + "]";
 	}
 
 	private static String printStringArray(String[] input) {
