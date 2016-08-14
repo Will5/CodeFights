@@ -33,41 +33,23 @@ public class SoccerSuperstition extends CodeFightsChallenge {
 	static int soccerSuperstition(int n, int k, int t) {
 		int c = 0, x, y, z;
 
-		for (x = 0; x < 100; x++) {
-			if (a(c(x), k)) {
-				for (y = x; y < 100; y++) {
-					if (a(c(y), k) && b(c(x), c(y), t)) {
-						for (z = x; z < 100; z++) {
-							if (a(c(z), k) && b(c(y), c(z), t) && b(c(z), c(x), t)) {
-								if (x == y && y == z) {
-									c+=1;
-								} else if (x != y) {
-									c+=3;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
+		for (x = 0; x < 100; x++)
+			if (a(x, k))
+				for (y = x; y < 100; y++)
+					if (a(y, k) && b(x, y, t))
+						for (z = x; z < 100; z++)
+							if (a(z, k) && b(y, z, t) && b(z, x, t))
+								c += x == y && y == z ? 1 : x != y ? 3 : 0;
 
 		return c;
 	}
 
-	static boolean a(String a, int k) {
-		return Math.abs(d(a.charAt(0)) - d(a.charAt(1))) < k;
+	static boolean a(int i, int k) {
+		return Math.abs((i / 10) - (i % 10)) < k;
 	}
 
-	static boolean b(String a, String b, int t) {
-		return d(a.charAt(1)) + d(b.charAt(0)) > t;
-	}
-
-	static String c(int i) {
-		return String.format("%02d", i);
-	}
-
-	static int d(char c) {
-		return c - 48;
+	static boolean b(int i, int j, int t) {
+		return (i / 10) + (j % 10) > t;
 	}
 
 }
